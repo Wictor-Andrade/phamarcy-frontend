@@ -1,3 +1,10 @@
 export enum SectionsName {
-    DASHBOARD='Dashboard'
+  HOME = "Home",
+  CATALOG = "Catalog",
+  SALES = "Sales",
+  DASHBOARDS = "Dashboard",
+  REQUISITON = "Requisition",
+  ORDER_MANAGEMENT = "OrderManagement",
+  ADMIN = "Admin",
+  CONFIG = "Config",
 }

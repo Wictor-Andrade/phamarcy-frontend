@@ -1,29 +1,50 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   BarChartIcon,
-  CameraIcon,
-  FileCodeIcon,
-  FileTextIcon,
+  ClipboardPenLine,
   FolderIcon,
-  LayoutDashboardIcon,
+  Folders,
+  House,
   ListIcon,
+  Plane,
   SettingsIcon,
+  ShoppingCart,
+  Tags,
   UsersIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavSecondary } from "@/components/nav-secondary"
-import { NavUser } from "@/components/nav-user"
+import { NavMain } from "@/components/nav-main";
+import { NavSecondary } from "@/components/nav-secondary";
+import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
-} from "@/components/ui/sidebar"
-import {SearchForm} from "@/components/search-form";
+} from "@/components/ui/sidebar";
+import { SearchForm } from "@/components/search-form";
+import { SectionsName } from "@/enums/sections-name";
 
-const data = {
+export type User = {
+  name: string;
+  email: string;
+  avatar: string;
+};
+
+export type NavItem = {
+  title: SectionsName;
+  url: string;
+  icon?: React.ReactNode;
+};
+
+export type Data = {
+  user: User;
+  navMain: NavItem[];
+  navSecondary: NavItem[];
+};
+
+const data: Data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
@@ -31,87 +52,49 @@ const data = {
   },
   navMain: [
     {
-      title: "Dashboard",
-      url: "#",
-      icon: LayoutDashboardIcon,
+      title: SectionsName.HOME,
+      url: "/home",
+      icon: <House />,
     },
     {
-      title: "Lifecycle",
-      url: "#",
-      icon: ListIcon,
+      title: SectionsName.CATALOG,
+      url: "/catalog",
+      icon: <Folders />,
     },
     {
-      title: "Analytics",
-      url: "#",
-      icon: BarChartIcon,
+      title: SectionsName.SALES,
+      url: "/sales",
+      icon: <ShoppingCart />,
     },
     {
-      title: "Projects",
-      url: "#",
-      icon: FolderIcon,
+      title: SectionsName.DASHBOARDS,
+      url: "/dashboards",
+      icon: <Plane />,
     },
     {
-      title: "Team",
-      url: "#",
-      icon: UsersIcon,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: CameraIcon,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: SectionsName.REQUISITON,
+      url: "/requisition",
+      icon: <ClipboardPenLine />,
     },
     {
-      title: "Proposal",
-      icon: FileTextIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: SectionsName.ORDER_MANAGEMENT,
+      url: "/ordermanagement",
+      icon: <Tags />,
     },
     {
-      title: "Prompts",
-      icon: FileCodeIcon,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
+      title: SectionsName.ADMIN,
+      url: "/admin",
+      icon: <UsersIcon />,
     },
   ],
   navSecondary: [
     {
-      title: "Settings",
-      url: "#",
-      icon: SettingsIcon,
-    }
+      title: SectionsName.CONFIG,
+      url: "/config",
+      icon: <SettingsIcon />,
+    },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -125,5 +108,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }
