@@ -3,12 +3,12 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import {cdn} from "@/utils/cdn";
+import Image from "next/image";
 
 export function LoginForm({
   className,
@@ -16,12 +16,14 @@ export function LoginForm({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
-          <CardDescription>
-            Login with your Apple or Google account
-          </CardDescription>
+      <Card className='rounded-none'>
+        <CardHeader className="text-center items-center py-8">
+          <Image
+              src={cdn.logo}
+              width={300}
+              height={121}
+              alt='a barateira'
+          />
         </CardHeader>
         <CardContent>
           <form>
