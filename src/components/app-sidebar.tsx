@@ -75,7 +75,7 @@ const data: Data = {
     },
     {
       title: SectionsName.ORDER_MANAGEMENT,
-      url: "/ordermanagement",
+      url: "/order-management",
       icon: <Tags />,
     },
     {

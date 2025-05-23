@@ -4,7 +4,7 @@ export enum SectionsName {
   SALES = "Sales",
   DASHBOARDS = "Dashboard",
   REQUISITON = "Requisition",
-  ORDER_MANAGEMENT = "OrderManagement",
+  ORDER_MANAGEMENT = "Order Management",
   ADMIN = "Admin",
   CONFIG = "Config",
 }
