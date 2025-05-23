@@ -9,23 +9,26 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {cdn} from "@/utils/cdn";
 import Image from "next/image";
+import {Checkbox} from "@/components/ui/checkbox";
+import Link from "next/link";
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card className='rounded-none'>
-        <CardHeader className="text-center items-center py-8">
+    <div className={cn("flex flex-col gap-6 my-8", className)} {...props}>
+      <Card className='rounded-none h-auto'>
+        <CardHeader className="text-center items-center my-8">
           <Image
+              className='w-auto h-auto'
               src={cdn.logo}
               width={300}
               height={121}
               alt='a barateira'
           />
         </CardHeader>
-        <CardContent>
+        <CardContent className="my-8">
           <form>
               <div className="grid gap-6">
                 <div className="grid gap-2">
@@ -33,39 +36,35 @@ export function LoginForm({
                   <Input
                     id="email"
                     type="email"
-                    placeholder="m@example.com"
+                    placeholder="email@abarateira.com"
                     required
                   />
                 </div>
                 <div className="grid gap-2">
-                  <div className="flex items-center">
                     <Label htmlFor="password">Password</Label>
-                    <a
-                      href="#"
-                      className="ml-auto text-sm underline-offset-4 hover:underline"
-                    >
-                      Forgot your password?
-                    </a>
-                  </div>
                   <Input id="password" type="password" required />
                 </div>
-                <Button type="submit" className="w-full">
-                  Login
-                </Button>
-              </div>
-              <div className="text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <a href="#" className="underline underline-offset-4">
-                  Sign up
-                </a>
+                <div className='flex flex-row'>
+                  <div className="gap-2 flex flex-row items-center">
+                    <Checkbox/>
+                    Remember me
+                  </div>
+                  <a
+                      href="#"
+                      className="ml-auto text-sm underline-offset-4 hover:underline"
+                  >
+                    Forgot your password?
+                  </a>
+                </div>
+                <Link href='/dashboard'>
+                  <Button type='submit' className="w-full" >
+                    Login
+                  </Button>
+                </Link>
               </div>
           </form>
         </CardContent>
       </Card>
-      <div className="text-balance text-center text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 [&_a]:hover:text-primary  ">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
-      </div>
     </div>
   )
 }
