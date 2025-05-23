@@ -2,12 +2,9 @@
 
 import * as React from "react";
 import {
-  BarChartIcon,
   ClipboardPenLine,
-  FolderIcon,
   Folders,
   House,
-  ListIcon,
   Plane,
   SettingsIcon,
   ShoppingCart,
