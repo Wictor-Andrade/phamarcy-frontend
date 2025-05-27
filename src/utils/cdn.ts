@@ -1,4 +1,4 @@
-import { sanitizeUrl } from '@/utils/sanitizeUrl'
+import {sanitizeUrl} from '@/utils/sanitizeUrl'
 
 if (!process.env.NEXT_PUBLIC_CDN_URL) {
     console.warn('⚠️ NEXT_PUBLIC_CDN_URL não está definido, usando fallback.')
@@ -13,4 +13,5 @@ function joinCdnPath(base: string, path: string): string {
 export const cdn = {
     logo: joinCdnPath(CDN_URL, '/phamarcy/logo-phamarcy.svg'),
     loginBackgroundImage: joinCdnPath(CDN_URL, '/phamarcy/login-background-image.jpg'),
+    backgroundLogin: joinCdnPath(CDN_URL, '/phamarcy/background_login.svg'),
 }

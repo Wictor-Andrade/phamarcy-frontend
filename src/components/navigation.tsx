@@ -1,9 +1,8 @@
 "use client";
 
-import {Calendar, ChevronRight, MoreHorizontal} from "lucide-react"
+import {MoreHorizontal} from "lucide-react"
 import {Button} from "@/components/ui/button"
 import {Badge} from "@/components/ui/badge"
-import {Input} from "@/components/ui/input"
 import {cn} from "@/lib/utils"
 
 export interface NavigationItem {
@@ -51,26 +50,6 @@ export default function Navigation({ items }: NavigationProps) {
                 <Button variant="ghost" size="sm" className="p-1">
                     <MoreHorizontal className="h-4 w-4 text-gray-600" />
                 </Button>
-            </div>
-
-            <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">Start date</span>
-                    <div className="relative">
-                        <Input type="text" placeholder="Select date" className="w-32 pr-8 text-sm" readOnly />
-                        <Calendar className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                    </div>
-                </div>
-
-                <ChevronRight className="h-4 w-4 text-gray-400" />
-
-                <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">End date</span>
-                    <div className="relative">
-                        <Input type="text" placeholder="Select date" className="w-32 pr-8 text-sm" readOnly />
-                        <Calendar className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                    </div>
-                </div>
             </div>
         </div>
     )
