@@ -4,12 +4,11 @@ import Image from "next/image";
 
 export default function LoginPage() {
   return (
-    <div className="relative flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
+    <div className="relative flex min-h-svh w-full flex-col items-center justify-center gap-6 p-6 md:p-10">
         <Image
-            src={cdn.backgroundLogin}
+            src={cdn.backgroundLogin2}
             alt="Background"
             fill
-            quality={100}
             priority
             className="object-cover -z-10"
         />
