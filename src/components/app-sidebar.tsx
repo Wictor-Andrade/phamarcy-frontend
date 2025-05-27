@@ -1,27 +1,12 @@
 "use client";
 
 import * as React from "react";
-import {
-  ClipboardPenLine,
-  Folders,
-  House,
-  Plane,
-  SettingsIcon,
-  ShoppingCart,
-  Tags,
-  UsersIcon,
-} from "lucide-react";
+import {ClipboardPenLine, Folders, House, Plane, ShoppingCart, Tags, UsersIcon,} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
-import { NavUser } from "@/components/nav-user";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarHeader,
-} from "@/components/ui/sidebar";
-import { SearchForm } from "@/components/search-form";
-import { SectionsName } from "@/enums/sections-name";
+import {NavMain} from "@/components/nav-main";
+import {NavUser} from "@/components/nav-user";
+import {Sidebar, SidebarContent, SidebarHeader,} from "@/components/ui/sidebar";
+import {SectionsName} from "@/enums/sections-name";
 
 export type User = {
   name: string;
@@ -38,7 +23,6 @@ export type NavItem = {
 export type Data = {
   user: User;
   navMain: NavItem[];
-  navSecondary: NavItem[];
 };
 
 const data: Data = {
@@ -83,14 +67,7 @@ const data: Data = {
       url: "/admin",
       icon: <UsersIcon />,
     },
-  ],
-  navSecondary: [
-    {
-      title: SectionsName.CONFIG,
-      url: "/config",
-      icon: <SettingsIcon />,
-    },
-  ],
+  ]
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -98,8 +75,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
         <NavUser user={data.user} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
-        <SearchForm />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />

@@ -1,6 +1,8 @@
-import { Separator } from "@/components/ui/separator"
-import { SidebarTrigger } from "@/components/ui/sidebar"
-import { SectionsName } from "@/enums/sections-name"
+"use client";
+
+import {Separator} from "@/components/ui/separator"
+import {SidebarTrigger} from "@/components/ui/sidebar"
+import {SectionsName} from "@/enums/sections-name"
 
 type SiteHeaderProps = {
     sectionsName: SectionsName
