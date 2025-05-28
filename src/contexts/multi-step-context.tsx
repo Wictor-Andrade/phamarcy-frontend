@@ -5,6 +5,8 @@ import {createContext, type ReactNode, useContext, useEffect, useState} from "re
 export interface Step {
     id: number
     title: string
+    status?: string
+    subtitle?: string
 }
 
 interface MultiStepContextType {

@@ -28,10 +28,10 @@ export default function Navigation({ items }: NavigationProps) {
                         className={cn(
                             "relative flex items-center space-x-2 pb-2 text-sm font-medium transition-colors",
                             item.active
-                                ? "text-foreground border-b-2 border-blue-600"
+                                ? "text-primary border-b-2 border-primary"
                                 : item.disabled
-                                    ? "text-gray-400 cursor-not-allowed"
-                                    : "text-gray-600 hover:text-blue-600"
+                                    ? "text-tertiary cursor-not-allowed"
+                                    : "text-secondary hover:text-primary"
                         )}
                         disabled={item.disabled}
                     >

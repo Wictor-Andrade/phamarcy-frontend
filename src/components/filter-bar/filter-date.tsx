@@ -50,7 +50,7 @@ export function FilterDate({ placeholder, value, onValueChange, className, showC
       </Popover>
       {showCalendarIcon && (
         <div className="px-3">
-          <Calendar className="h-4 w-4 text-blue-500" />
+          <Calendar className="h-4 w-4 text-secondary" />
         </div>
       )}
     </div>

@@ -25,7 +25,7 @@ export function FilterSelect({
       <div className={cn("flex items-center flex-1", className)}>
       {showSearch && (
         <div className="px-3">
-          <Search className="h-4 w-4 text-blue-500" />
+          <Search className="h-4 w-4 text-secondary" />
         </div>
       )}
       <Select value={value} onValueChange={onValueChange}>

@@ -28,7 +28,7 @@ export function StepIndicator() {
                                         className={cn(
                                             "text-sm font-medium",
                                             step.status === "current" && "text-red-500",
-                                            step.status === "upcoming" && "text-blue-600",
+                                            step.status === "upcoming" && "text-primary",
                                         )}
                                     >
                   </span>
@@ -39,9 +39,9 @@ export function StepIndicator() {
                             <span
                                 className={cn(
                                     "ml-2 text-sm font-medium",
-                                    step.status === "completed" && "text-blue-600",
-                                    step.status === "current" && "text-blue-600",
-                                    step.status === "upcoming" && "text-blue-600",
+                                    step.status === "completed" && "text-primary",
+                                    step.status === "current" && "text-primary",
+                                    step.status === "upcoming" && "text-primary",
                                 )}
                             >
                 {step.id}. {step.title}
