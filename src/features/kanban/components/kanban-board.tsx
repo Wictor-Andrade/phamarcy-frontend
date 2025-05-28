@@ -74,7 +74,7 @@ export default function KanbanBoard() {
     }
 
     return (
-        <div className="flex flex-row gap-4 h-full w-full p-4 justify-center items-start bg-red-600">
+        <div className="flex flex-row gap-4 h-full w-full p-4 justify-center items-start bg-blue-50">
             {kanbanData.columns
                 .sort((a, b) => a.order - b.order)
                 .map((column) => (

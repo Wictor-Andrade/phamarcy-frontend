@@ -32,10 +32,10 @@ export function KanbanCard({ title, category, description, image, users, priorit
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-4 space-y-2 max-w-[300px]">
+        <div className="bg-card border border-blue-200 rounded-lg p-4 shadow-smbg-background shadow-sm overflow-hidden mb-4 space-y-3 max-w-[400px]">
             <div className="">
                 <div className="flex justify-between items-start mb-2">
-                    <div className="text-sm text-gray-500">{category}</div>
+                    <div className="text-blue-600 text-sm font-medium">{category}</div>
                     <Badge className={`text-xs ${getPriorityColor(priority)}`}>{priority}</Badge>
                 </div>
                 <div className="text-violet-700 font-medium text-lg mb-1">{title}</div>
@@ -76,20 +76,20 @@ export function KanbanCard({ title, category, description, image, users, priorit
 
                 <div className="flex items-center justify-between">
                     <div className="flex space-x-1">
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-violet-700">
+                        <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
                             <PlusIcon className="h-5 w-5" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-violet-700">
+                        <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
                             <CalendarIcon className="h-5 w-5" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-violet-700">
+                        <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
                             <LinkIcon className="h-5 w-5" />
                         </Button>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-violet-700">
+                        <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
                             <FlagIcon className="h-5 w-5" />
                         </Button>
                     </div>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 text-violet-700">
+                    <Button variant="ghost" size="icon" className="text-blue-500 hover:text-blue-600">
                         <MoreHorizontalIcon className="h-5 w-5" />
                     </Button>
                 </div>

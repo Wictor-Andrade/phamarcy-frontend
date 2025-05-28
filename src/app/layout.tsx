@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="pt-Br" className='dark'>
+    <html lang="pt-Br" className='light'>
     <head>
         <title>A Barateira</title>
         <meta name="description" content="Retaguarda A Barateira" />
@@ -33,7 +33,18 @@ export default function RootLayout({
         <meta charSet="utf-8" />
     </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <ToastContainer />
+      <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+      />
           {children}
       </body>
     </html>

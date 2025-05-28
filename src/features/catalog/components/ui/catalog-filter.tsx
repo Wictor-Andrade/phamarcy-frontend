@@ -31,7 +31,7 @@ export default function CatalogFilter() {
     }
 
     return (
-        <div className="p-8 space-y-8">
+        <div>
                 <FilterBar>
                     <FilterSelect placeholder="Product" options={productOptions} value={product} onValueChange={setProduct} />
                     <FilterSelect
