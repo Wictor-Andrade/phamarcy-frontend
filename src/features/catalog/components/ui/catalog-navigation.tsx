@@ -1,18 +1,18 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import {AdminTabs} from "@/features/admin/enums/admin-tabs";
-import {useAdminNavigationStore} from "@/features/admin/store/useAdminNavigationStore";
-import {HomeTabs} from "@/features/home/enums/home-tabs";
+import {useCatalogNavigationStore} from "@/features/catalog/store/useCatalogNavigationStore";
+import {CatalogTabs} from "@/features/catalog/enums/catalog-tabs";
 
 export default function CatalogNavigation() {
-    const activeTab = useAdminNavigationStore((s) => s.activeTab)
-    const setActiveTab = useAdminNavigationStore((s) => s.setActiveTab)
+    const activeTab = useCatalogNavigationStore((s) => s.activeTab)
+    const setActiveTab = useCatalogNavigationStore((s) => s.setActiveTab)
 
     const navigationItems: NavigationItem[] = [
-        { label: AdminTabs.COLLABORATORS, notifications: 2, active: activeTab === AdminTabs.COLLABORATORS, setActive: setActiveTab },
-        { label: AdminTabs.NEW_COLLABORATORS, notifications: 99, active: activeTab === AdminTabs.NEW_COLLABORATORS, setActive: setActiveTab },
-        { label: HomeTabs.Admin, disabled: true, active: activeTab === AdminTabs.ADMIN, setActive: setActiveTab },]
+        { label: CatalogTabs.CATALOG, active: activeTab === CatalogTabs.CATALOG, setActive: setActiveTab },
+        { label: CatalogTabs.CREATE_INGREDIENT, notifications: 2, active: activeTab === CatalogTabs.CREATE_INGREDIENT, setActive: setActiveTab },
+        { label: CatalogTabs.CREATE_PRODUCT, active: activeTab === CatalogTabs.CREATE_PRODUCT, setActive: setActiveTab },
+        { label: CatalogTabs.ADMIN, disabled: true, active: activeTab === CatalogTabs.ADMIN, setActive: setActiveTab },]
 
     return <Navigation items={navigationItems} />
 }

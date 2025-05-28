@@ -1,15 +1,18 @@
 "use client";
 
-import {AdminTabs} from "@/features/admin/enums/admin-tabs";
-import CollaboratorsComponent from "@/features/admin/components/collaborators-component";
-import NewCollaboratorsComponent from "@/features/admin/components/new-collaborators-component";
+import {CatalogTabs} from "@/features/catalog/enums/catalog-tabs";
+import CatalogComponent from "@/features/catalog/components/catalog-component";
+import CreateProductComponent from "@/features/catalog/components/create-product-component";
+import CreateIngredientComponent from "@/features/catalog/components/create-ingredient-component";
 
-export default function CatalogContents({ activeTab }: { activeTab: AdminTabs }) {
+export default function CatalogContents({ activeTab }: { activeTab: CatalogTabs }) {
     switch (activeTab) {
-        case AdminTabs.COLLABORATORS:
-            return <CollaboratorsComponent />
-        case AdminTabs.NEW_COLLABORATORS:
-            return <NewCollaboratorsComponent />
+        case CatalogTabs.CATALOG:
+            return <CatalogComponent />
+        case CatalogTabs.CREATE_PRODUCT:
+            return <CreateProductComponent />
+        case CatalogTabs.CREATE_INGREDIENT:
+            return <CreateIngredientComponent />
         default:
             return null
     }
