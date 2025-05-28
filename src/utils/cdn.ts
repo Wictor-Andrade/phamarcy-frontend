@@ -14,4 +14,5 @@ export const cdn = {
     logo: joinCdnPath(CDN_URL, '/phamarcy/logo-phamarcy.svg'),
     loginBackgroundImage: joinCdnPath(CDN_URL, '/phamarcy/login-background-image.jpg'),
     backgroundLogin: joinCdnPath(CDN_URL, '/phamarcy/background_login.svg'),
+    backgroundLogin2: joinCdnPath(CDN_URL, '/phamarcy/image-login-background.webp'),
 }
