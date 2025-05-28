@@ -3,7 +3,7 @@
 import {Button} from "@/components/ui/button"
 import {FormField} from "@/components/form-field"
 import {useMultiStep} from "@/contexts/multi-step-context"
-import {toast} from "react-toastify";
+import {toast} from "sonner";
 
 export function StepTwo() {
     const { nextStep, prevStep, markStepAsCompleted, formData, reset } = useMultiStep()

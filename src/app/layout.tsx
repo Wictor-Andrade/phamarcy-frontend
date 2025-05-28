@@ -1,7 +1,7 @@
 "use client";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
-import {ToastContainer} from "react-toastify";
+import {Toaster} from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,17 +33,16 @@ export default function RootLayout({
         <meta charSet="utf-8" />
     </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <ToastContainer
+      <Toaster
           position="bottom-left"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
+          closeButton
           theme="light"
+          richColors={false}
+          toastOptions={{
+              classNames: {
+                  toast: 'cursor-pointer',
+              },
+          }}
       />
           {children}
       </body>
