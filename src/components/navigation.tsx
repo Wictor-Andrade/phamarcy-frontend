@@ -10,7 +10,7 @@ export interface NavigationItem {
     label: string
     notifications?: number
     disabled?: boolean
-    setActive: (label: string) => void
+    setActive: (label: any) => void
 }
 
 interface NavigationProps {
@@ -28,7 +28,7 @@ export default function Navigation({ items }: NavigationProps) {
                         className={cn(
                             "relative flex items-center space-x-2 pb-2 text-sm font-medium transition-colors",
                             item.active
-                                ? "text-blue-600 border-b-2 border-blue-600"
+                                ? "text-foreground border-b-2 border-blue-600"
                                 : item.disabled
                                     ? "text-gray-400 cursor-not-allowed"
                                     : "text-gray-600 hover:text-blue-600"

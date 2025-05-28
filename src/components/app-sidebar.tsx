@@ -27,9 +27,9 @@ export type Data = {
 
 const data: Data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "João Goes",
+    email: "joao.goes@abarateira.com",
+    avatar: "/avatars/01.png",
   },
   navMain: [
     {

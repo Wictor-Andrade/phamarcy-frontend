@@ -1,7 +1,5 @@
+import AnalyticsDashboardComponent from "@/features/analytics/components/analytics-dashboard";
+
 export default function ReportsComponent() {
-    return (
-        <div className="@container/main flex flex-1 flex-col gap-2">
- reports
-        </div>
-    )
+    return <AnalyticsDashboardComponent />
 }

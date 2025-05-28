@@ -1,0 +1,340 @@
+{
+  "columns": [
+    {
+      "id": "in-progress",
+      "title": "Em Andamento",
+      "order": 1,
+      "cards": [
+        {
+          "id": "card-1",
+          "title": "Conferir estoque de antibióticos",
+          "category": "Estoque",
+          "description": "Verificar quantidades e validades dos antibióticos em estoque",
+          "image": "/images/pills-1.jpg",
+          "assignedUsers": [
+            {
+              "id": 1,
+              "name": "Dr. Carlos Silva",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 2,
+              "name": "Ana Farmacêutica",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-02-15",
+          "tags": ["estoque", "antibióticos", "validade"],
+          "createdAt": "2024-01-20T10:00:00Z",
+          "updatedAt": "2024-01-25T14:30:00Z"
+        },
+        {
+          "id": "card-2",
+          "title": "Organizar seção de vitaminas",
+          "category": "Organização",
+          "description": "Reorganizar prateleiras de suplementos e vitaminas por categoria",
+          "image": "/images/pills-2.jpg",
+          "assignedUsers": [
+            {
+              "id": 3,
+              "name": "Maria Auxiliar",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 4,
+              "name": "João Estoquista",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "medium",
+          "dueDate": "2024-02-10",
+          "tags": ["organização", "vitaminas", "prateleiras"],
+          "createdAt": "2024-01-18T09:15:00Z",
+          "updatedAt": "2024-01-24T16:45:00Z"
+        }
+      ]
+    },
+    {
+      "id": "title",
+      "title": "Para Fazer",
+      "order": 2,
+      "cards": [
+        {
+          "id": "card-3",
+          "title": "Pedido de medicamentos controlados",
+          "category": "Pedidos",
+          "description": "Fazer pedido semanal de medicamentos controlados para fornecedor",
+          "assignedUsers": [
+            {
+              "id": 1,
+              "name": "Dr. Carlos Silva",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 2,
+              "name": "Ana Farmacêutica",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-02-08",
+          "tags": ["controlados", "pedido", "fornecedor"],
+          "createdAt": "2024-01-22T11:30:00Z",
+          "updatedAt": "2024-01-26T08:20:00Z"
+        },
+        {
+          "id": "card-4",
+          "title": "Verificar receitas pendentes",
+          "category": "Atendimento",
+          "description": "Revisar e validar receitas médicas pendentes de aprovação",
+          "image": "/images/pills-3.jpg",
+          "assignedUsers": [
+            {
+              "id": 2,
+              "name": "Ana Farmacêutica",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-02-07",
+          "tags": ["receitas", "validação", "atendimento"],
+          "createdAt": "2024-01-19T13:45:00Z",
+          "updatedAt": "2024-01-25T10:15:00Z"
+        },
+        {
+          "id": "card-5",
+          "title": "Limpeza da área de manipulação",
+          "category": "Limpeza",
+          "description": "Higienização completa da área de manipulação de medicamentos",
+          "assignedUsers": [
+            {
+              "id": 3,
+              "name": "Maria Auxiliar",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "medium",
+          "dueDate": "2024-02-09",
+          "tags": ["limpeza", "manipulação", "higiene"],
+          "createdAt": "2024-01-21T15:20:00Z",
+          "updatedAt": "2024-01-26T12:00:00Z"
+        },
+        {
+          "id": "card-6",
+          "title": "Atualizar preços no sistema",
+          "category": "Sistema",
+          "description": "Atualizar tabela de preços conforme nova lista do fornecedor",
+          "assignedUsers": [
+            {
+              "id": 4,
+              "name": "João Estoquista",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "medium",
+          "dueDate": "2024-02-12",
+          "tags": ["preços", "sistema", "atualização"],
+          "createdAt": "2024-01-23T09:00:00Z",
+          "updatedAt": "2024-01-26T14:30:00Z"
+        },
+        {
+          "id": "card-7",
+          "title": "Conferir medicamentos vencidos",
+          "category": "Controle",
+          "description": "Verificar produtos próximos ao vencimento e fazer descarte adequado",
+          "assignedUsers": [
+            {
+              "id": 1,
+              "name": "Dr. Carlos Silva",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 3,
+              "name": "Maria Auxiliar",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-02-06",
+          "tags": ["validade", "descarte", "controle"],
+          "createdAt": "2024-01-24T10:30:00Z",
+          "updatedAt": "2024-01-26T16:00:00Z"
+        }
+      ]
+    },
+    {
+      "id": "completed",
+      "title": "Concluído",
+      "order": 3,
+      "cards": [
+        {
+          "id": "card-8",
+          "title": "Recebimento de medicamentos",
+          "category": "Recebimento",
+          "description": "Conferir e dar entrada nos medicamentos recebidos do fornecedor",
+          "assignedUsers": [
+            {
+              "id": 4,
+              "name": "João Estoquista",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 2,
+              "name": "Ana Farmacêutica",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-01-25",
+          "tags": ["recebimento", "conferência", "entrada"],
+          "createdAt": "2024-01-20T08:00:00Z",
+          "updatedAt": "2024-01-25T17:00:00Z",
+          "completedAt": "2024-01-25T17:00:00Z"
+        },
+        {
+          "id": "card-9",
+          "title": "Treinamento sobre novos medicamentos",
+          "category": "Treinamento",
+          "description": "Capacitação da equipe sobre novos medicamentos e posologia",
+          "assignedUsers": [
+            {
+              "id": 1,
+              "name": "Dr. Carlos Silva",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 2,
+              "name": "Ana Farmacêutica",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 3,
+              "name": "Maria Auxiliar",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "medium",
+          "dueDate": "2024-01-24",
+          "tags": ["treinamento", "capacitação", "medicamentos"],
+          "createdAt": "2024-01-15T10:30:00Z",
+          "updatedAt": "2024-01-24T16:20:00Z",
+          "completedAt": "2024-01-24T16:20:00Z"
+        },
+        {
+          "id": "card-10",
+          "title": "Inventário mensal",
+          "category": "Inventário",
+          "description": "Contagem completa do estoque para fechamento mensal",
+          "image": "/images/pills-4.jpg",
+          "assignedUsers": [
+            {
+              "id": 1,
+              "name": "Dr. Carlos Silva",
+              "avatar": "/avatars/01.png"
+            },
+            {
+              "id": 4,
+              "name": "João Estoquista",
+              "avatar": "/avatars/01.png"
+            }
+          ],
+          "priority": "high",
+          "dueDate": "2024-01-31",
+          "tags": ["inventário", "contagem", "estoque"],
+          "createdAt": "2024-01-25T14:15:00Z",
+          "updatedAt": "2024-01-31T18:45:00Z",
+          "completedAt": "2024-01-31T18:45:00Z"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. Carlos Silva",
+      "email": "carlos.silva@farmacia.com",
+      "avatar": "/avatars/01.png",
+      "role": "Farmacêutico Responsável",
+      "department": "Farmácia"
+    },
+    {
+      "id": 2,
+      "name": "Ana Farmacêutica",
+      "email": "ana.santos@farmacia.com",
+      "avatar": "/avatars/01.png",
+      "role": "Farmacêutica",
+      "department": "Farmácia"
+    },
+    {
+      "id": 3,
+      "name": "Maria Auxiliar",
+      "email": "maria.costa@farmacia.com",
+      "avatar": "/avatars/01.png",
+      "role": "Auxiliar de Farmácia",
+      "department": "Atendimento"
+    },
+    {
+      "id": 4,
+      "name": "João Estoquista",
+      "email": "joao.oliveira@farmacia.com",
+      "avatar": "/avatars/01.png",
+      "role": "Auxiliar de Estoque",
+      "department": "Estoque"
+    }
+  ],
+  "categories": [
+    {
+      "id": "estoque",
+      "name": "Estoque",
+      "color": "#3B82F6"
+    },
+    {
+      "id": "atendimento",
+      "name": "Atendimento",
+      "color": "#8B5CF6"
+    },
+    {
+      "id": "pedidos",
+      "name": "Pedidos",
+      "color": "#10B981"
+    },
+    {
+      "id": "limpeza",
+      "name": "Limpeza",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "controle",
+      "name": "Controle",
+      "color": "#EF4444"
+    },
+    {
+      "id": "sistema",
+      "name": "Sistema",
+      "color": "#6B7280"
+    },
+    {
+      "id": "treinamento",
+      "name": "Treinamento",
+      "color": "#EC4899"
+    }
+  ],
+  "priorities": [
+    {
+      "id": "low",
+      "name": "Baixa",
+      "color": "#10B981"
+    },
+    {
+      "id": "medium",
+      "name": "Média",
+      "color": "#F59E0B"
+    },
+    {
+      "id": "high",
+      "name": "Alta",
+      "color": "#EF4444"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import type {Metadata} from "next";
+"use client";
 import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {ToastContainer} from "react-toastify";
@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "A Barateira",
-  description: "Retaguarda A Barateira",
-};
+// export const metadata: Metadata = {
+//   title: "A Barateira",
+//   description: "Retaguarda A Barateira",
+// };
 
 export default function RootLayout({
   children,
@@ -26,6 +26,12 @@ export default function RootLayout({
 
   return (
     <html lang="pt-Br" className='dark'>
+    <head>
+        <title>A Barateira</title>
+        <meta name="description" content="Retaguarda A Barateira" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+    </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <ToastContainer />
           {children}
