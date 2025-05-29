@@ -53,6 +53,8 @@ export default function PieDashboard() {
                         data={chartData}
                         dataKey="visitors"
                         nameKey="category"
+                        height={100}
+                        width={100}
                         cx="50%"
                         cy="50%"
                         fill="#8884d8"

@@ -41,7 +41,7 @@ export function FormField({
 
     return (
         <div className="space-y-2">
-            <Label htmlFor={name} className="text-blue-600 font-medium">
+            <Label htmlFor={name} className="text-secondary font-medium">
                 {label}
                 {required && <span className="text-red-500 ml-1">*</span>}
             </Label>

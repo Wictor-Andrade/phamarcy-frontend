@@ -2,9 +2,8 @@
 import {MultiStepProvider} from "@/contexts/multi-step-context";
 import {MultiStepForm} from "@/components/multi-step-form";
 import {StepOne} from "@/features/product/steps/step-one";
-import {StepTwo} from "@/features/product/steps/step-two";
+import StepTwo from "@/features/product/steps/step-two";
 import {StepThree} from "@/features/product/steps/step-three";
-
 
 const stepsData = [
     {
@@ -13,7 +12,7 @@ const stepsData = [
     },
     {
         id: 2,
-        title: "Ingredient Details",
+        title: "Product Details",
     },
     {
         id: 3,

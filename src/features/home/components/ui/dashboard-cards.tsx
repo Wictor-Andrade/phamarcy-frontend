@@ -18,8 +18,8 @@ export default function DashboardCards() {
     }
 
     return (
-        <div className="grid grid-cols-4 gap-6 py-4">
-            <Card className="col-span-1">
+        <div className="flex flex-wrap gap-6 py-4">
+            <Card className="flex flex-col justify-between basis-[calc(50%-0.75rem)] h-64">
                 <CardHeader className="pb-2">
                     <CardTitle className="text-foreground text-lg font-semibold">Sales target</CardTitle>
                     <div className="flex items-center gap-4 text-xs">
@@ -33,8 +33,8 @@ export default function DashboardCards() {
                         </div>
                     </div>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center justify-center pb-4">
-                    <div className="relative w-full max-w-[100px] h-[100px]">
+                <CardContent className="flex flex-1 items-center justify-center">
+                    <div className="relative w-36 h-36">
                         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" strokeLinecap="round" />
                             <circle
@@ -58,24 +58,24 @@ export default function DashboardCards() {
                             </defs>
                         </svg>
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <span className="text-2xl font-bold text-foreground">67%</span>
+                            <span className="text-xl font-bold text-foreground">67%</span>
                         </div>
                     </div>
                 </CardContent>
             </Card>
 
-            <Card className="col-span-1">
+            <Card className="flex flex-col justify-between basis-[calc(50%-0.75rem)] h-64">
                 <CardHeader className="pb-2">
                     <CardTitle className="text-foreground text-lg font-semibold">Customer activity</CardTitle>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center justify-center pb-4 w-full">
-                    <div className="relative w-full max-w-[120px] h-[150px]">
+                <CardContent className="flex flex-1 items-center justify-center">
+                    <div className="w-32 h-32">
                         <PieDashboard />
                     </div>
                 </CardContent>
             </Card>
 
-            <Card className="col-span-2">
+            <Card className="flex flex-col justify-between basis-full h-64">
                 <CardHeader className="pb-2">
                     <CardTitle className="text-foreground text-lg font-semibold">Active Stores by state</CardTitle>
                     <div className="flex items-center gap-4 text-xs">
@@ -89,8 +89,8 @@ export default function DashboardCards() {
                         </div>
                     </div>
                 </CardHeader>
-                <CardContent className="flex flex-col items-center justify-center pb-4">
-                    <div className="w-full h-auto">
+                <CardContent className="h-full w-full flex items-center justify-center">
+                    <div className="w-full h-48">
                         <Brazil type="select-multiple" mapColor="red" cityColors={cityColors} />
                     </div>
                 </CardContent>
