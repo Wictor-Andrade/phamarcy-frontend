@@ -1,7 +1,8 @@
-"use client";
-import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 import {Toaster} from "sonner";
+import {Geist, Geist_Mono} from "next/font/google";
+
+import {Metadata} from "next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,10 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// export const metadata: Metadata = {
-//   title: "A Barateira",
-//   description: "Retaguarda A Barateira",
-// };
+export const metadata: Metadata = {
+  title: "A Barateira",
+  description: "Retaguarda A Barateira",
+};
 
 export default function RootLayout({
   children,
@@ -26,12 +27,12 @@ export default function RootLayout({
 
   return (
     <html lang="pt-Br" className='light'>
-    <head>
-        <title>A Barateira</title>
-        <meta name="description" content="Retaguarda A Barateira" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-    </head>
+    {/*<head>*/}
+    {/*    <title>A Barateira</title>*/}
+    {/*    <meta name="description" content="Retaguarda A Barateira" />*/}
+    {/*    <meta name="viewport" content="width=device-width, initial-scale=1" />*/}
+    {/*    <meta charSet="utf-8" />*/}
+    {/*</head>*/}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <Toaster
           position="bottom-left"
