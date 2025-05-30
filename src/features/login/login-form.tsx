@@ -41,13 +41,13 @@ export function LoginForm({
                 <Input id="password" type="password" required />
               </div>
               <div className="flex flex-row">
-                <div className="gap-2 flex flex-row items-center">
+                <div className="gap-2 flex flex-row items-center text-primary">
                   <Checkbox />
                   Remember me
                 </div>
                 <a
                   href="#"
-                  className="ml-auto text-sm underline-offset-4 hover:underline"
+                  className="ml-auto text-sm text-tertiary underline-offset-4 hover:underline"
                 >
                   Forgot your password?
                 </a>
