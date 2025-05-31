@@ -47,7 +47,7 @@ export function LoginForm({
                 </div>
                 <a
                   href="#"
-                  className="ml-auto text-sm text-tertiary underline-offset-4 hover:underline"
+                  className="ml-auto text-sm text-primary underline-offset-4 hover:underline"
                 >
                   Forgot your password?
                 </a>
