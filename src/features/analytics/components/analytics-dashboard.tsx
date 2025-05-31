@@ -66,16 +66,11 @@ const formatYAxis = (value: number) => {
 
 export default function AnalyticsDashboardComponent() {
     return (
-        <div className="p-6 flex flex-col items-center space-y-2">
+        <div className="p-6 grid grid-cols-2 gap-4 place-items-center">
             {[
                 { title: "Monthly Sales", chart: (
-                        <BarChart data={monthlyBarData} width={500}
-                                  height={300}       margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}>
+                        <BarChart data={monthlyBarData} width={478}
+                                  height={310}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
                             <YAxis tickFormatter={formatYAxis} axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
@@ -84,13 +79,8 @@ export default function AnalyticsDashboardComponent() {
                         </BarChart>
                     )},
                 { title: "Monthly Posts", chart: (
-                        <LineChart data={monthlyLineData} width={500}
-                                   height={300}       margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}>
+                        <LineChart data={monthlyLineData} width={478}
+                                   height={310}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
                             <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
@@ -99,13 +89,8 @@ export default function AnalyticsDashboardComponent() {
                         </LineChart>
                     )},
                 { title: "Monthly Sales", chart: (
-                        <BarChart layout="horizontal" data={monthlyHorizontalData} width={500}
-                                  height={300} margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}>
+                        <BarChart layout="horizontal" data={monthlyHorizontalData} width={478}
+                                  height={310}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                             <XAxis type="number" tickFormatter={formatYAxis} axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
                             <YAxis type="category" dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
@@ -114,13 +99,8 @@ export default function AnalyticsDashboardComponent() {
                         </BarChart>
                     )},
                 { title: "Monthly Posts 2", chart: (
-                        <LineChart data={monthlyLineData2}       width={500}
-                                   height={300}       margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                        }}>
+                        <LineChart data={monthlyLineData2}       width={478}
+                                   height={310}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
                             <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
                             <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "#666" }} />
@@ -129,19 +109,19 @@ export default function AnalyticsDashboardComponent() {
                         </LineChart>
                     )}
             ].map((c, i) => (
-                <div key={i} className="p-6 rounded-lg shadow-sm border w-auto h-auto">
+                <div key={i} className="p-4 shadow-sm border w-full h-full">
                     <h2 className="text-xl font-semibold mb-4">{c.title}</h2>
                     <div className="flex items-center gap-4 mb-4">
-                        <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full" />
+                        <div className="flex items-center gap-2 mb-2">
+                            <div className="w-3 h-3 rounded-full bg-tertiary" />
                             <span className="text-sm">Current Year</span>
                         </div>
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 rounded-full " />
+                            <div className="w-3 h-3 bg-blue-600 rounded-full" />
                             <span className="text-sm">Past Year</span>
                         </div>
                     </div>
-                    <div className="p-8">
+                    <div>
                         {c.chart}
                     </div>
                 </div>
