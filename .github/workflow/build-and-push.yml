@@ -1,0 +1,28 @@
+name: Build And Push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    name: Build & Push Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      - name: Login no GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+
+      - name: Build and push Docker image
+        run: |
+          docker build -t ghcr.io/wictor-andrade/sso-frontend:${{ github.sha }} .
+          docker tag ghcr.io/wictor-andrade/sso-frontend:${{ github.sha }} ghcr.io/wictor-andrade/sso-frontend:latest
+          docker push ghcr.io/wictor-andrade/sso-frontend:${{ github.sha }}
+          docker push ghcr.io/wictor-andrade/sso-frontend:latest
+
+      - name: Trigger deploy on Dokploy
+        run: curl -X POST ${{ secrets.DOKPLOY_WEBHOOK }}
