@@ -1,4 +1,4 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 import tailwindcss_animate from "tailwindcss-animate";
 
 export default {
@@ -11,58 +11,74 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--foreground)",
         },
         tertiary: {
-          DEFAULT: "hsl(var(--tertiary))",
-          foreground: "hsl(var(--tertiary-foreground))",
+          DEFAULT: "var(--tertiary)",
+          foreground: "var(--foreground)",
+        },
+        success: {
+          DEFAULT: "var(--sucess)",
+          foreground: "var(--foreground)",
+        },
+        error: {
+          DEFAULT: "var(--error)",
+          foreground: "var(--foreground)",
+        },
+        warning: {
+          DEFAULT: "var(--warning)",
+          foreground: "var(--foreground)",
+        },
+        overlay: {
+          DEFAULT: "var(--overlay)",
+          foreground: "var(--foreground)",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--foreground)",
         },
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        input: "var(--input)",
+        ring: "var(--ring)",
         chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
+          "1": "var(--primary)",
+          "2": "var(--secondary)",
+          "3": "var(--tertiary)",
+          "4": "var(--primary)",
+          "5": "var(--primary)",
         },
         sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+          DEFAULT: "var(--tertiary)",
+          foreground: "var(--foreground)",
+          primary: "var(--primary)",
+          "primary-foreground": "var(--foreground)",
+          accent: "var(--primary)",
+          "accent-foreground": "var(--foreground)",
+          border: "var(--primary)",
+          ring: "var(--primary)",
         },
       },
       borderRadius: {
