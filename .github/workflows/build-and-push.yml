@@ -20,7 +20,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           docker build -t ghcr.io/wictor-andrade/phamarcy-frontend:${{ github.sha }} .
-          docker tag ghcr.io/wictor-andrade/phamarcy-frontend${{ github.sha }} ghcr.io/wictor-andrade/phamarcy-frontend:latest
+          docker tag ghcr.io/wictor-andrade/phamarcy-frontend:${{ github.sha }} ghcr.io/wictor-andrade/phamarcy-frontend:latest
           docker push ghcr.io/wictor-andrade/phamarcy-frontend:${{ github.sha }}
           docker push ghcr.io/wictor-andrade/phamarcy-frontend:latest
 
