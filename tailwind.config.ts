@@ -14,12 +14,12 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {
-          DEFAULT: "var(--primary)",
+          DEFAULT: "var(--background)",
           foreground: "var(--foreground)",
         },
         popover: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--foreground)",
+          DEFAULT: "var(--background)",
+          foreground: "var(--secondary)",
         },
         primary: {
           DEFAULT: "var(--primary)",
@@ -34,7 +34,7 @@ export default {
           foreground: "var(--foreground)",
         },
         success: {
-          DEFAULT: "var(--sucess)",
+          DEFAULT: "var(--success)",
           foreground: "var(--foreground)",
         },
         error: {
@@ -50,12 +50,12 @@ export default {
           foreground: "var(--foreground)",
         },
         muted: {
-          DEFAULT: "var(--primary)",
+          DEFAULT: "var(--tertiary)",
           foreground: "var(--foreground)",
         },
         accent: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--foreground)",
+          DEFAULT: "var(--tertiary)",
+          foreground: "var(--background-secondary)",
         },
         destructive: {
           DEFAULT: "var(--primary)",
@@ -75,7 +75,7 @@ export default {
           foreground: "var(--foreground)",
           primary: "var(--primary)",
           "primary-foreground": "var(--foreground)",
-          accent: "var(--primary)",
+          accent: "var(--background-accent)",
           "accent-foreground": "var(--foreground)",
           border: "var(--primary)",
           ring: "var(--primary)",

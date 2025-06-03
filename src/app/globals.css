@@ -6,7 +6,11 @@
   :root {
     --background: #fff;
 
-    --foreground: #fff;
+    --background-accent: #ffffff33;
+
+    --foreground: #1a08ec;
+
+    --foreground-secondary: #fff;
 
     --primary: #1a08ec;
 

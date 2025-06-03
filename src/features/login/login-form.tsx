@@ -14,7 +14,7 @@ export function LoginForm({
 }: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div className={cn("flex flex-col gap-6 my-8", className)} {...props}>
-      <Card className="rounded-none h-auto">
+      <Card className="rounded-none h-auto bg-background min-w-2xl">
         <CardHeader className="text-center items-center my-8">
           <Image
             className="w-auto h-auto"
@@ -28,17 +28,26 @@ export function LoginForm({
           <form>
             <div className="grid gap-6">
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">User Address</Label>
+                <div className="border-b border-primary border-1 pb-1">
+                  <Input
+                    className="border-0 shadow-none"
+                    id="email"
+                    type="email"
+                    placeholder="joe@phamarcy.com"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="grid gap-2 border-b border-primary border-1 pb-1">
+                <Label htmlFor="password">Password</Label>
                 <Input
-                  id="email"
-                  type="email"
-                  placeholder="email@abarateira.com"
+                  className="border-0 shadow-none"
+                  id="password"
+                  type="password"
+                  placeholder="***********"
                   required
                 />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" required />
               </div>
               <div className="flex flex-row">
                 <div className="gap-2 flex flex-row items-center text-primary">
@@ -54,7 +63,7 @@ export function LoginForm({
               </div>
               <Link href="/home">
                 <Button type="submit" className="w-full">
-                  Login
+                  Log in
                 </Button>
               </Link>
             </div>

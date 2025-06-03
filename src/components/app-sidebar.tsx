@@ -1,12 +1,24 @@
 "use client";
 
 import * as React from "react";
-import {ClipboardPenLine, Folders, House, Plane, ShoppingCart, Tags, UsersIcon,} from "lucide-react";
+import {
+  ClipboardPenLine,
+  Folders,
+  House,
+  Plane,
+  ShoppingCart,
+  Tags,
+  UsersIcon,
+} from "lucide-react";
 
-import {NavMain} from "@/components/nav-main";
-import {NavUser} from "@/components/nav-user";
-import {Sidebar, SidebarContent, SidebarHeader,} from "@/components/ui/sidebar";
-import {SectionsName} from "@/enums/sections-name";
+import { NavMain } from "@/components/nav-main";
+import { NavUser } from "@/components/nav-user";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+} from "@/components/ui/sidebar";
+import { SectionsName } from "@/enums/sections-name";
 
 export type User = {
   name: string;
@@ -27,9 +39,9 @@ export type Data = {
 
 const data: Data = {
   user: {
-    name: "João Goes",
-    email: "joao.goes@abarateira.com",
-    avatar: "/avatars/01.png",
+    name: "Jon Gomes",
+    email: "jon@barateira.com",
+    avatar: "/avatars/avatar.jpg",
   },
   navMain: [
     {
@@ -67,7 +79,7 @@ const data: Data = {
       url: "/admin",
       icon: <UsersIcon />,
     },
-  ]
+  ],
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
