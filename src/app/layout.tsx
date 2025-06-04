@@ -27,12 +27,6 @@ export default function RootLayout({
 
   return (
     <html lang="pt-Br" className='light'>
-    {/*<head>*/}
-    {/*    <title>A Barateira</title>*/}
-    {/*    <meta name="description" content="Retaguarda A Barateira" />*/}
-    {/*    <meta name="viewport" content="width=device-width, initial-scale=1" />*/}
-    {/*    <meta charSet="utf-8" />*/}
-    {/*</head>*/}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <Toaster
           position="bottom-left"
