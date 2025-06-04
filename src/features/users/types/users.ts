@@ -1,5 +1,7 @@
-export interface User {
-    id: number
-    name: string
+export type User = {
+    id: string;
+    filialId: string;
+    email: string;
+    name: string;
     avatar: string
-}
+};

@@ -1,4 +1,5 @@
-import {LoginForm} from "@/features/login/login-form";
+"use client";
+import {LoginForm} from "@/features/auth/forms/login-form";
 import {cdn} from "@/utils/cdn";
 import Image from "next/image";
 
