@@ -15,9 +15,14 @@ export async function recoverUserInformation() {
     return response.data;
 }
 
+export async function logOut() {
+    await api.post('auth/logout');
+}
+
 const authApi = {
     signInRequest,
     recoverUserInformation,
+    logOut,
 };
 
 export default authApi;

@@ -14,7 +14,8 @@ type SignInData = {
 type AuthContextType = {
     isAuthenticated: boolean;
     getMe: () => User;
-    signIn: (data: SignInData) => Promise<void>
+    signIn: (data: SignInData) => Promise<void>;
+    logOut: () => Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -62,8 +63,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
         return user;
     }
 
+    async function logOut(){
+        await authApi.logOut();
+    }
+
     return (
-        <AuthContext.Provider value={{ getMe, isAuthenticated, signIn }}>
+        <AuthContext.Provider value={{ getMe, isAuthenticated, signIn, logOut }}>
             {children}
         </AuthContext.Provider>
     );
