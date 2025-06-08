@@ -1,12 +1,12 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import {useDashboardsNavigationStore} from "@/features/dashboards/store/useDashboardsNavigationStore";
 import {DashboardsTabs} from "@/features/dashboards/enums/dashboards-tabs";
+import {useAtom} from "jotai";
+import {activeDashboardsTabState} from "@/features/dashboards/state/atom";
 
 export default function DashboardsNavigation() {
-    const activeTab = useDashboardsNavigationStore((s) => s.activeTab)
-    const setActiveTab = useDashboardsNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeDashboardsTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: DashboardsTabs.OVERVIEW, active: activeTab === DashboardsTabs.OVERVIEW, setActive: setActiveTab },

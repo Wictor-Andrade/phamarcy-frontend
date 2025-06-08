@@ -29,20 +29,20 @@ export default function RootLayout({
   return (
     <html lang="pt-Br" className='light'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <Toaster
-          position="bottom-left"
-          closeButton
-          theme="light"
-          richColors={false}
-          toastOptions={{
-              classNames: {
-                  toast: 'cursor-pointer',
-              },
-          }}
-      />
-      <AuthProvider>
-          {children}
-      </AuthProvider>
+          <Toaster
+              position="bottom-left"
+              closeButton
+              theme="light"
+              richColors={false}
+              toastOptions={{
+                  classNames: {
+                      toast: 'cursor-pointer',
+                  },
+              }}
+          />
+          <AuthProvider>
+              {children}
+          </AuthProvider>
       </body>
     </html>
   );

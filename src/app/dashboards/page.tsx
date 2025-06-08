@@ -5,10 +5,12 @@ import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar"
 import {SectionsName} from "@/enums/sections-name";
 import DashboardsNavigation from "@/features/dashboards/components/ui/dashboards-navigation";
 import DashboardsContents from "@/features/dashboards/components/dashboards-contents";
-import {useDashboardsNavigationStore} from "@/features/dashboards/store/useDashboardsNavigationStore";
+import {useAtom} from "jotai";
+import {activeDashboardsTabState} from "@/features/dashboards/state/atom";
 
 export default function Page() {
-    const activeTab = useDashboardsNavigationStore((s) => s.activeTab)
+    const [activeTab] = useAtom(activeDashboardsTabState)
+
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />

@@ -20,7 +20,7 @@ export function StepOne() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div
                         onClick={handleSelect}
-                        className="p-4 border border-primary rounded-lg cursor-pointer hover:bg-blue-500"
+                        className="p-4 border border-secondary rounded-lg cursor-pointer hover:border-primary"
                     >
                         <h3 className="font-medium text-primary">New Ingredient</h3>
                         <p className="text-sm text-gray-500">Create a product with a new active ingredient</p>

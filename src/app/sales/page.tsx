@@ -5,11 +5,12 @@ import {SidebarInset, SidebarProvider} from "@/components/ui/sidebar";
 import {SectionsName} from "@/enums/sections-name";
 import SalesContents from "@/features/sales/components/sales-contents";
 import SalesNavigation from "@/features/sales/components/ui/sales-navigation";
-import {useSalesNavigationStore} from "@/features/sales/store/useSalesNavigationStore";
+import {useAtom} from "jotai";
+import {activeSalesTabState} from "@/features/sales/state/atom";
 
 
 export default function Page() {
-    const activeTab = useSalesNavigationStore((s) => s.activeTab)
+  const [activeTab] = useAtom(activeSalesTabState)
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />

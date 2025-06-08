@@ -5,11 +5,12 @@ import {AppSidebar} from "@/components/app-sidebar";
 import {SiteHeader} from "@/components/site-header";
 import HomeNavigation from "@/features/home/components/ui/home-navigation";
 import {SectionsName} from "@/enums/sections-name";
-import {useNavigationStore} from "@/features/home/store/useNavigationStore";
 import HomeContent from "@/features/home/components/home-content";
+import {useAtom} from "jotai";
+import {activeHomeTabState} from "@/features/home/state/atom";
 
 export default function Page() {
-    const activeTab = useNavigationStore((s) => s.activeTab)
+    const [activeTab] = useAtom(activeHomeTabState)
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />

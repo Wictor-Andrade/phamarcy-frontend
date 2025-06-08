@@ -2,11 +2,11 @@
 
 import Navigation, {NavigationItem} from "@/components/navigation"
 import {AdminTabs} from "@/features/admin/enums/admin-tabs";
-import {useAdminNavigationStore} from "@/features/admin/store/useAdminNavigationStore";
+import {useAtom} from "jotai";
+import {activeAdminTabState} from "@/features/admin/state/atoms";
 
 export default function AdminNavigation() {
-    const activeTab = useAdminNavigationStore((s) => s.activeTab)
-    const setActiveTab = useAdminNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeAdminTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: AdminTabs.COLLABORATORS, notifications: 2, active: activeTab === AdminTabs.COLLABORATORS, setActive: setActiveTab },

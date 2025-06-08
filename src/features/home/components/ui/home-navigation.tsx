@@ -1,12 +1,12 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import {useNavigationStore} from "@/features/home/store/useNavigationStore"
 import {HomeTabs} from "@/features/home/enums/home-tabs";
+import {useAtom} from "jotai";
+import {activeHomeTabState} from "@/features/home/state/atom";
 
 export default function HomeNavigation() {
-    const activeTab = useNavigationStore((s) => s.activeTab)
-    const setActiveTab = useNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeHomeTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: HomeTabs.Overview, active: activeTab === HomeTabs.Overview, setActive: setActiveTab },

@@ -13,6 +13,7 @@ type SignInData = {
 
 type AuthContextType = {
     isAuthenticated: boolean;
+    user: User | null;
     getMe: () => User;
     signIn: (data: SignInData) => Promise<void>;
     logOut: () => Promise<void>;
@@ -65,10 +66,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     async function logOut(){
         await authApi.logOut();
+        router.push('/login');
     }
 
     return (
-        <AuthContext.Provider value={{ getMe, isAuthenticated, signIn, logOut }}>
+        <AuthContext.Provider value={{ getMe, user, isAuthenticated, signIn, logOut }}>
             {children}
         </AuthContext.Provider>
     );

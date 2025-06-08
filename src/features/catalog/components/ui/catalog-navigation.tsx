@@ -1,12 +1,12 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import {useCatalogNavigationStore} from "@/features/catalog/store/useCatalogNavigationStore";
 import {CatalogTabs} from "@/features/catalog/enums/catalog-tabs";
+import {activeCatalogTabState} from "@/features/catalog/state/atom";
+import {useAtom} from "jotai";
 
 export default function CatalogNavigation() {
-    const activeTab = useCatalogNavigationStore((s) => s.activeTab)
-    const setActiveTab = useCatalogNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeCatalogTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: CatalogTabs.CATALOG, active: activeTab === CatalogTabs.CATALOG, setActive: setActiveTab },

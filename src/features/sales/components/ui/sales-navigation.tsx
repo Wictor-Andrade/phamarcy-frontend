@@ -2,11 +2,11 @@
 
 import Navigation, {NavigationItem} from "@/components/navigation"
 import {SalesTabs} from "@/features/sales/enums/sales-tabs";
-import {useSalesNavigationStore} from "@/features/sales/store/useSalesNavigationStore";
+import {useAtom} from "jotai";
+import {activeSalesTabState} from "@/features/sales/state/atom";
 
 export default function SalesNavigation() {
-    const activeTab = useSalesNavigationStore((s) => s.activeTab)
-    const setActiveTab = useSalesNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeSalesTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: SalesTabs.SALES_POINT, active: activeTab === SalesTabs.SALES_POINT, setActive: setActiveTab },

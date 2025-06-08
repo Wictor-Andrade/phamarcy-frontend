@@ -1,12 +1,12 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import { useRequisitionNavigationStore } from "../../store/useRequisitionNavigationStore"
-import { RequisitionTabs } from "../../enums/order-management-tabs"
+import {RequisitionTabs} from "../../enums/order-management-tabs"
+import {useAtom} from "jotai";
+import {activeRequisitionTabState} from "@/features/requisition/state/atom";
 
 export default function RequisitionNavigation() {
-    const activeTab = useRequisitionNavigationStore((s) => s.activeTab)
-    const setActiveTab = useRequisitionNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeRequisitionTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: RequisitionTabs.CREATE_REQUISITION, active: activeTab === RequisitionTabs.CREATE_REQUISITION, setActive: setActiveTab },

@@ -1,26 +1,14 @@
 "use client";
 
-import { ComponentProps, ReactNode, useContext } from "react";
-import {
-  ClipboardPenLine,
-  Folders,
-  House,
-  Plane,
-  ShoppingCart,
-  Tags,
-  UsersIcon,
-} from "lucide-react";
+import {ComponentProps, ReactNode, useContext} from "react";
+import {ClipboardPenLine, Folders, House, Plane, ShoppingCart, Tags, UsersIcon,} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-} from "@/components/ui/sidebar";
-import { SectionsName } from "@/enums/sections-name";
-import { AuthContext } from "@/features/auth/contexts/auth-context";
-import { User } from "@/features/users/types/users";
+import {NavMain} from "@/components/nav-main";
+import {NavUser} from "@/components/nav-user";
+import {Sidebar, SidebarContent, SidebarFooter,} from "@/components/ui/sidebar";
+import {SectionsName} from "@/enums/sections-name";
+import {AuthContext} from "@/features/auth/contexts/auth-context";
+import {User} from "@/features/users/types/users";
 
 export type NavItem = {
   title: SectionsName;
@@ -34,12 +22,12 @@ export type Data = {
 };
 
 export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
-  const { getMe, isAuthenticated } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
 
-  if (!isAuthenticated) return null;
+  if (!isAuthenticated || !user) return null;
 
   const data: Data = {
-    user: getMe(),
+    user,
     navMain: [
       {
         title: SectionsName.HOME,

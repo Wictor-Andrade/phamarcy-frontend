@@ -1,12 +1,12 @@
 "use client"
 
 import Navigation, {NavigationItem} from "@/components/navigation"
-import { useOrderManagementNavigationStore } from "../../store/useOrderManagementNavigationStore"
-import { OrderManagementTabs } from "../../enums/order-management-tabs"
+import {OrderManagementTabs} from "../../enums/order-management-tabs"
+import {useAtom} from "jotai";
+import {activeOrderManagementTabState} from "@/features/order-management/state/atom";
 
 export default function OrderManagementNavigation() {
-    const activeTab = useOrderManagementNavigationStore((s) => s.activeTab)
-    const setActiveTab = useOrderManagementNavigationStore((s) => s.setActiveTab)
+    const [activeTab, setActiveTab] = useAtom(activeOrderManagementTabState)
 
     const navigationItems: NavigationItem[] = [
         { label: OrderManagementTabs.REQUISITIONS, active: activeTab === OrderManagementTabs.REQUISITIONS, setActive: setActiveTab },

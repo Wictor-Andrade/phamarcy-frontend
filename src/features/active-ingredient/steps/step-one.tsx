@@ -4,6 +4,8 @@ import {Button} from "@/components/ui/button"
 import {FormField} from "@/components/form-field"
 import {useMultiStep} from "@/contexts/multi-step-context"
 import {toast} from "sonner"
+import {currentActiveIngredient} from "@/features/active-ingredient/state/atom";
+import {useAtom} from "jotai";
 
 export function StepOne() {
     const {
@@ -14,12 +16,16 @@ export function StepOne() {
         reset
     } = useMultiStep()
 
+    const [current] = useAtom(currentActiveIngredient);
+
     const handleSave = () => {
         console.log("Form data:", formData)
         markStepAsCompleted(1)
         reset()
         toast.success("Active Ingredient added successfully")
     }
+
+    console.log(current)
 
     const handleNext = () => {
         markStepAsCompleted(1)
@@ -42,12 +48,6 @@ export function StepOne() {
                 name="origin"
                 label="Origin"
                 placeholder="Ex: Sintética / Natural / Biotecnológica"
-              />
-
-              <FormField
-                name="importance"
-                label="Importance"
-                placeholder="Ex: Antitérmico amplamente utilizado"
               />
 
               <FormField
