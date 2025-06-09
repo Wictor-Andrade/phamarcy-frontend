@@ -13,6 +13,8 @@ import {useMultiStep} from "@/contexts/multi-step-context"
 import activeIngredientApi from "@/features/active-ingredient/service/active-ingredient-api"
 import axiosErrorToString from "@/utils/services/axios-error-to-string"
 import {OriginType} from "@/utils/enums"
+import {useSetAtom} from "jotai";
+import {currentActiveIngredient} from "@/features/active-ingredient/state/atom";
 
 const formSchema = z.object({
     name: z.string().min(1, "Nome obrigatório"),
@@ -24,7 +26,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 export function StepOne() {
-    const { markStepAsCompleted } = useMultiStep()
+    const { markStepAsCompleted, nextStep } = useMultiStep()
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -36,17 +38,25 @@ export function StepOne() {
         },
     })
 
+    const  setCurrent = useSetAtom(currentActiveIngredient)
+
+
+
     async function onSubmit(data: FormValues) {
         try {
-            await activeIngredientApi.createActiveIngredient(data)
+            const createdActiveIngredient = await activeIngredientApi.createActiveIngredient(data)
             toast.success("Active Ingredient Saved!")
             markStepAsCompleted(1)
+            setCurrent(createdActiveIngredient)
+            nextStep()
         } catch (e) {
             toast.error(axiosErrorToString(e))
         }
     }
 
+
     return (
+        <>
       <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-sm p-8 space-y-8">
               <h2 className="text-2xl font-semibold text-primary mb-8">Details</h2>
@@ -123,5 +133,6 @@ export function StepOne() {
               </div>
           </form>
       </Form>
+    </>
     )
 }

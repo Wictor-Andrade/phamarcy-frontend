@@ -8,9 +8,7 @@ export function StepTwo() {
     const { prevStep, markStepAsCompleted, formData, reset } = useMultiStep()
 
     const handleSubmit = () => {
-        console.log("Final form data:", formData)
-        markStepAsCompleted(3)
-        // Handle final form submission here
+        markStepAsCompleted(2)
         alert("Form submitted successfully!")
         reset()
     }
