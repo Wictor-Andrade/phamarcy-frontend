@@ -1,10 +1,10 @@
 'use client';
 import {createContext, ReactNode, useEffect, useState} from 'react';
-import authApi from '@/features/auth/services/auth-api';
 import axiosErrorToString from '@/utils/services/axios-error-to-string';
 import {toast} from 'sonner';
 import {User} from "@/features/users/types/users";
 import {usePathname, useRouter} from 'next/navigation';
+import authApi from "@/features/auth/service/auth-api";
 
 type SignInData = {
     email: string;

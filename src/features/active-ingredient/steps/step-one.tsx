@@ -1,83 +1,127 @@
-'use client'
+"use client"
 
+import {useForm} from "react-hook-form"
+import {zodResolver} from "@hookform/resolvers/zod"
+import {z} from "zod"
 import {Button} from "@/components/ui/button"
-import {FormField} from "@/components/form-field"
-import {useMultiStep} from "@/contexts/multi-step-context"
+import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form"
+import {Input} from "@/components/ui/input"
+import {Textarea} from "@/components/ui/textarea"
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import {toast} from "sonner"
-import {currentActiveIngredient} from "@/features/active-ingredient/state/atom";
-import {useAtom} from "jotai";
+import {useMultiStep} from "@/contexts/multi-step-context"
+import activeIngredientApi from "@/features/active-ingredient/service/active-ingredient-api"
+import axiosErrorToString from "@/utils/services/axios-error-to-string"
+import {OriginType} from "@/utils/enums"
+
+const formSchema = z.object({
+    name: z.string().min(1, "Nome obrigatório"),
+    description: z.string().min(1, "Descrição obrigatória"),
+    contraindication: z.string().min(1, "Contraindicação obrigatória"),
+    origin: z.nativeEnum(OriginType, { errorMap: () => ({ message: "Origem obrigatória" }) }),
+})
+
+type FormValues = z.infer<typeof formSchema>
 
 export function StepOne() {
-    const {
-        nextStep,
-        prevStep,
-        markStepAsCompleted,
-        formData,
-        reset
-    } = useMultiStep()
+    const { markStepAsCompleted } = useMultiStep()
 
-    const [current] = useAtom(currentActiveIngredient);
+    const form = useForm<FormValues>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            name: "",
+            description: "",
+            contraindication: "",
+            origin: OriginType.SINTETICA,
+        },
+    })
 
-    const handleSave = () => {
-        console.log("Form data:", formData)
-        markStepAsCompleted(1)
-        reset()
-        toast.success("Active Ingredient added successfully")
-    }
-
-    console.log(current)
-
-    const handleNext = () => {
-        markStepAsCompleted(1)
-        nextStep()
+    async function onSubmit(data: FormValues) {
+        try {
+            await activeIngredientApi.createActiveIngredient(data)
+            toast.success("Active Ingredient Saved!")
+            markStepAsCompleted(1)
+        } catch (e) {
+            toast.error(axiosErrorToString(e))
+        }
     }
 
     return (
-      <div className="bg-white rounded-lg shadow-sm p-8">
-          <h2 className="text-2xl font-semibold text-primary mb-8">Details</h2>
+      <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-sm p-8 space-y-8">
+              <h2 className="text-2xl font-semibold text-primary mb-8">Details</h2>
 
-          <div className="space-y-8">
               <FormField
-                name="activeIngredientName"
-                label="Active Ingredient Name"
-                required
-                placeholder="Ex: Paracetamol"
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                      <FormLabel>Active Ingredient Name</FormLabel>
+                      <FormControl>
+                          <Input placeholder="Ex: Paracetamol" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                )}
               />
 
               <FormField
+                control={form.control}
                 name="origin"
-                label="Origin"
-                placeholder="Ex: Sintética / Natural / Biotecnológica"
+                render={({ field }) => (
+                  <FormItem>
+                      <FormLabel>Origin</FormLabel>
+                      <FormControl>
+                          <Select onValueChange={field.onChange} value={field.value}>
+                              <SelectTrigger>
+                                  <SelectValue placeholder="Selecione a origem" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                  {Object.values(OriginType).map((item) => (
+                                    <SelectItem key={item} value={item}>
+                                        {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
+                                    </SelectItem>
+                                  ))}
+                              </SelectContent>
+                          </Select>
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                )}
               />
 
               <FormField
+                control={form.control}
                 name="contraindication"
-                label="Contraindication"
-                placeholder="Ex: Hipersensibilidade ao princípio ativo"
+                render={({ field }) => (
+                  <FormItem>
+                      <FormLabel>Contraindication</FormLabel>
+                      <FormControl>
+                          <Input placeholder="Ex: Hipersensibilidade ao princípio ativo" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                )}
               />
 
               <FormField
+                control={form.control}
                 name="description"
-                label="Description"
-                type="textarea"
-                placeholder="Ex: Utilizado para alívio de dores leves a moderadas"
+                render={({ field }) => (
+                  <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                          <Textarea placeholder="Ex: Utilizado para alívio de dores leves a moderadas" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                  </FormItem>
+                )}
               />
-          </div>
 
-          <div className="flex justify-between py-4">
-              <Button onClick={prevStep} variant="outline">
-                  Previous
-              </Button>
-
-              <div className="space-x-2">
-                  <Button onClick={handleSave} variant="outline">
-                      Save
-                  </Button>
-                  <Button onClick={handleNext}>
-                      Next
-                  </Button>
+              <div className="flex justify-end space-x-2 pt-4">
+                  <Button type="submit">Save</Button>
               </div>
-          </div>
-      </div>
+          </form>
+      </Form>
     )
 }

@@ -18,7 +18,7 @@ const stepsData = [
 
 export default function CreateIngredientComponent() {
     return (
-        <div className="@container/main flex flex-1 flex-col gap-2">
+        <div className="@container/main">
             <MultiStepProvider initialSteps={stepsData}>
                 <MultiStepForm>
                     <StepOne />

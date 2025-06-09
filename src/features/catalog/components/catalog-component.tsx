@@ -1,4 +1,5 @@
 "use client"
+
 import CatalogFilter from "@/features/catalog/components/ui/catalog-filter"
 import {useEffect, useRef, useState} from "react"
 import {MoreHorizontal} from "lucide-react"
@@ -6,22 +7,14 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar"
 import {Button} from "@/components/ui/button"
 import {Checkbox} from "@/components/ui/checkbox"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
-
-const data = Array.from({ length: 20 }, (_, i) => ({
-    id: i + 1,
-    nome: "Dipirona",
-    imagem: "/placeholder-image.svg?height=32&width=32",
-    principioAtivo: "Metamizol",
-    concentracao: "500mg",
-    formaFarmaceutica: "Comprimido",
-    fabricante: "Genérico",
-    categoria: "Analgésico",
-}))
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
+import medicationApi from "@/features/medication/service/api-medication";
+import {Medication} from "@/features/medication/medication";
 
 export default function CatalogComponent() {
-    const [selectedRows, setSelectedRows] = useState<number[]>([])
-    const [currentPage, setCurrentPage] = useState(2)
+    const [selectedRows, setSelectedRows] = useState<string[]>([])
+    const [currentPage, setCurrentPage] = useState(1)
+    const [data, setData] = useState<Medication[]>([])
     const totalPages = 11
 
     const handleSelectAll = (checked: boolean) => {
@@ -32,7 +25,7 @@ export default function CatalogComponent() {
         }
     }
 
-    const handleSelectRow = (id: number, checked: boolean) => {
+    const handleSelectRow = (id: string, checked: boolean) => {
         if (checked) {
             setSelectedRows([...selectedRows, id])
         } else {
@@ -41,8 +34,7 @@ export default function CatalogComponent() {
     }
 
     const checkboxRef = useRef<HTMLInputElement>(null)
-
-    const isAllSelected = selectedRows.length === data.length
+    const isAllSelected = selectedRows.length === data.length && data.length > 0
     const isIndeterminate = selectedRows.length > 0 && selectedRows.length < data.length
 
     useEffect(() => {
@@ -51,26 +43,35 @@ export default function CatalogComponent() {
         }
     }, [isIndeterminate])
 
+    useEffect(() => {
+        async function fetchMedications() {
+            try {
+                const meds = await medicationApi.getAllMedications()
+                setData(meds)
+                setSelectedRows([])
+            } catch (error) {
+                console.error("Erro ao buscar medicamentos", error)
+            }
+        }
+        fetchMedications()
+    }, [currentPage])
+
     return (
         <div className="@container/main flex flex-1 flex-col gap-4 p-8">
             <CatalogFilter />
-            <div className='gap-8'>
+            <div className="gap-8">
                 <div className="border rounded-lg">
                     <Table>
                         <TableHeader>
                             <TableRow>
                                 <TableHead className="w-12">
-                                    <Checkbox
-                                        checked={isAllSelected}
-                                        onCheckedChange={handleSelectAll}
-                                    />
+                                    <Checkbox checked={isAllSelected} onCheckedChange={handleSelectAll} />
                                 </TableHead>
                                 <TableHead className="font-medium text-primary">Nome do Medicamento</TableHead>
                                 <TableHead className="font-medium text-primary">Princípio Ativo</TableHead>
                                 <TableHead className="font-medium text-primary">Dosagem</TableHead>
+                                <TableHead className="font-medium text-primary">Origem</TableHead>
                                 <TableHead className="font-medium text-primary">Forma Farmacêutica</TableHead>
-                                <TableHead className="font-medium text-primary">Fabricante</TableHead>
-                                <TableHead className="font-medium text-primary">Categoria</TableHead>
                                 <TableHead className="w-12"></TableHead>
                             </TableRow>
                         </TableHeader>
@@ -86,19 +87,18 @@ export default function CatalogComponent() {
                                     <TableCell>
                                         <div className="flex items-center gap-3">
                                             <Avatar className="h-8 w-8">
-                                                <AvatarImage src={item.imagem} alt={item.nome} />
-                                                <AvatarFallback className="text-xs">
-                                                    {item.nome.slice(0, 2).toUpperCase()}
-                                                </AvatarFallback>
+                                                <AvatarImage src={item.imageUrl ?? undefined} alt={item.name} />
+                                                <AvatarFallback className="text-xs">{item.name.slice(0, 2).toUpperCase()}</AvatarFallback>
                                             </Avatar>
-                                            <span className="text-primary font-medium">{item.nome}</span>
+                                            <span className="text-primary font-medium">{item.name}</span>
                                         </div>
                                     </TableCell>
-                                    <TableCell className="text-primary">{item.principioAtivo}</TableCell>
-                                    <TableCell className="text-primary">{item.concentracao}</TableCell>
-                                    <TableCell className="text-primary">{item.formaFarmaceutica}</TableCell>
-                                    <TableCell className="text-primary">{item.fabricante}</TableCell>
-                                    <TableCell className="text-primary">{item.categoria}</TableCell>
+                                    <TableCell className="text-primary">{item.ActiveIngredient.name}</TableCell>
+                                    <TableCell className="text-primary">
+                                        {item.dosageAmount} {item.dosageUnit}
+                                    </TableCell>
+                                    <TableCell className="text-primary">{item.origin}</TableCell>
+                                    <TableCell className="text-primary">{item.dosageForm}</TableCell>
                                     <TableCell>
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild>

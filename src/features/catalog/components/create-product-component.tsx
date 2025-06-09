@@ -1,9 +1,9 @@
 'use client'
 import {MultiStepProvider} from "@/contexts/multi-step-context";
 import {MultiStepForm} from "@/components/multi-step-form";
-import {StepOne} from "@/features/product/steps/step-one";
-import StepTwo from "@/features/product/steps/step-two";
-import {StepThree} from "@/features/product/steps/step-three";
+import {StepOne} from "@/features/medication/steps/step-one";
+import StepTwo from "@/features/medication/steps/step-two";
+import {StepThree} from "@/features/medication/steps/step-three";
 
 const stepsData = [
     {
