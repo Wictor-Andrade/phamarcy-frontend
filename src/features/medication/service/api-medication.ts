@@ -3,6 +3,11 @@ import {CreateMedicationDto, UpdateMedicationDto} from "@/features/medication/me
 
 const apiPath = 'medications';
 
+export interface GetMedicationsFilterDto {
+    search?: string
+    idActiveIngredient?: string
+}
+
 export async function createMedication(data: CreateMedicationDto) {
     const response = await api.post(apiPath, data);
     return response.data;
@@ -28,7 +33,16 @@ export async function deleteMedication(id: string) {
     return response.data;
 }
 
+
+
+export async function getMedicationsWithFilter(filter: GetMedicationsFilterDto) {
+    const response = await api.post(`${apiPath}/filter`, filter)
+    return response.data
+}
+
+
 const medicationApi = {
+    getMedicationsWithFilter,
     createMedication,
     getAllMedications,
     getMedicationById,

@@ -8,13 +8,12 @@ import {Button} from "@/components/ui/button"
 import {Checkbox} from "@/components/ui/checkbox"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger,} from "@/components/ui/dropdown-menu"
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table"
-import medicationApi from "@/features/medication/service/api-medication";
-import {Medication} from "@/features/medication/medication";
+import {useGetMedicationWithFilter} from "@/features/medication/hooks/useGetMedicationWithFilter";
 
 export default function CatalogComponent() {
     const [selectedRows, setSelectedRows] = useState<string[]>([])
     const [currentPage, setCurrentPage] = useState(1)
-    const [data, setData] = useState<Medication[]>([])
+    const { data } = useGetMedicationWithFilter()
     const totalPages = 11
 
     const handleSelectAll = (checked: boolean) => {
@@ -42,19 +41,6 @@ export default function CatalogComponent() {
             checkboxRef.current.indeterminate = isIndeterminate
         }
     }, [isIndeterminate])
-
-    useEffect(() => {
-        async function fetchMedications() {
-            try {
-                const meds = await medicationApi.getAllMedications()
-                setData(meds)
-                setSelectedRows([])
-            } catch (error) {
-                console.error("Erro ao buscar medicamentos", error)
-            }
-        }
-        fetchMedications()
-    }, [currentPage])
 
     return (
         <div className="@container/main flex flex-1 flex-col gap-4 p-8">
