@@ -15,6 +15,9 @@ import axiosErrorToString from "@/utils/services/axios-error-to-string"
 import {OriginType} from "@/utils/enums"
 import {useSetAtom} from "jotai";
 import {currentActiveIngredient} from "@/features/active-ingredient/state/atom";
+import {useAtom} from "jotai/index";
+import {activeIngredientDialogIsOpen} from "@/features/catalog/state/atom";
+import {CustomDialog, DialogButton} from "@/components/custom-dialog";
 
 const formSchema = z.object({
     name: z.string().min(1, "Nome obrigatório"),
@@ -26,7 +29,33 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 export function StepOne() {
-    const { markStepAsCompleted, nextStep } = useMultiStep()
+
+    const [isOpen, setIsOpen] = useAtom(activeIngredientDialogIsOpen)
+    const  setCurrent = useSetAtom(currentActiveIngredient)
+
+
+    const { markStepAsCompleted, nextStep, reset } = useMultiStep()
+
+
+    const handleCloseAction = () => {
+        form.reset()
+        setCurrent(undefined)
+        reset()
+        setIsOpen(false);
+    }
+
+
+    const confirmButtons: DialogButton[] = [
+        {
+            label: "Cancelar",
+            variant: "outline",
+            onClick: handleCloseAction,
+        },
+        {
+            label: "Confirmar",
+            onClick: nextStep,
+        },
+    ]
 
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
@@ -38,7 +67,6 @@ export function StepOne() {
         },
     })
 
-    const  setCurrent = useSetAtom(currentActiveIngredient)
 
 
 
@@ -48,7 +76,7 @@ export function StepOne() {
             toast.success("Active Ingredient Saved!")
             markStepAsCompleted(1)
             setCurrent(createdActiveIngredient)
-            nextStep()
+            setIsOpen(true)
         } catch (e) {
             toast.error(axiosErrorToString(e))
         }
@@ -57,6 +85,14 @@ export function StepOne() {
 
     return (
         <>
+            <CustomDialog
+                isOpen={isOpen}
+                onClose={handleCloseAction}
+                title="Active Ingredient Created"
+                description="Deseja continuar editando?"
+                buttons={confirmButtons}
+                size="sm"
+            />
       <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="bg-white rounded-lg shadow-sm p-8 space-y-8">
               <h2 className="text-2xl font-semibold text-primary mb-8">Details</h2>

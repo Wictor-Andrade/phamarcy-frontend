@@ -11,7 +11,7 @@ interface FormFieldProps {
     name: string
     label: string
     placeholder?: string
-    type?: "input" | "textarea"
+    type?: "input" | "textarea" | "number"
     required?: boolean
 }
 
@@ -34,7 +34,7 @@ export function FormField({
         value: formData[name] || "",
         onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => handleChange(e.target.value),
         className:
-            type === "input"
+            type !== "textarea"
                 ? "border-0 border-b-2 border-blue-300 rounded-none px-0 py-2 focus:border-blue-500 focus:ring-0 placeholder:text-blue-400"
                 : "min-h-[120px] border-2 border-blue-200 rounded-md p-4 focus:border-blue-500 focus:ring-0 placeholder:text-blue-400 resize-none",
     }
@@ -45,7 +45,7 @@ export function FormField({
                 {label}
                 {required && <span className="text-red-500 ml-1">*</span>}
             </Label>
-            {type === "input" ? <Input {...commonProps} /> : <Textarea {...commonProps} />}
+            {type !== "textarea" ? <Input type={type} {...commonProps} /> : <Textarea {...commonProps} />}
         </div>
     )
 }
