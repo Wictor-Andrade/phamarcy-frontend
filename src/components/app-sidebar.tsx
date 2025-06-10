@@ -1,7 +1,7 @@
 "use client";
 
 import {ComponentProps, ReactNode, useContext} from "react";
-import {ClipboardPenLine, Folders, House, Plane, ShoppingCart, Tags, UsersIcon,} from "lucide-react";
+import {ClipboardPenLine, Folders, House, Plane, ShoppingCart, Tag, Tags, UsersIcon,} from "lucide-react";
 
 import {NavMain} from "@/components/nav-main";
 import {NavUser} from "@/components/nav-user";
@@ -38,6 +38,11 @@ export function AppSidebar({ ...props }: ComponentProps<typeof Sidebar>) {
         title: SectionsName.CATALOG,
         url: "/catalog",
         icon: <Folders />,
+      },
+      {
+        title: SectionsName.PROMOTION,
+        url: "/promotion",
+        icon: <Tag />,
       },
       {
         title: SectionsName.SALES,

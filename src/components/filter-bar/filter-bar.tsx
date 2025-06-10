@@ -10,7 +10,7 @@ export function FilterBar({ children, className }: FilterBarProps) {
   return (
       <div
           className={cn(
-              "flex items-stretch border rounded-lg overflow-hidden shadow-sm w-full",
+              "flex items-center border rounded-lg shadow-sm w-full px-2 gap-2",
               className,
           )}
       >

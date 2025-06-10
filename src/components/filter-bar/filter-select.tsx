@@ -1,45 +1,89 @@
-"use client"
-
-import {Search} from "lucide-react"
+import {useMemo, useState} from "react"
+import {Check, ChevronsUpDown} from "lucide-react"
 import {cn} from "@/lib/utils"
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
+import {Command, CommandEmpty, CommandGroup, CommandInput, CommandItem,} from "@/components/ui/command"
+import {Popover, PopoverContent, PopoverTrigger,} from "@/components/ui/popover"
+import {Button} from "@/components/ui/button"
+
+export interface SelectOption {
+  value: string
+  label: string
+}
 
 interface FilterSelectProps {
-  placeholder: string
-  options: { value: string; label: string }[]
+  options: SelectOption[]
   value?: string
-  onValueChange?: (value: string) => void
+  onChange?: (value: string) => void
+  placeholder?: string
   className?: string
-  showSearch?: boolean
+  maxVisibleOptions?: number
+  allowClear?: boolean
 }
 
 export function FilterSelect({
-  placeholder,
-  options,
-  value,
-  onValueChange,
-  className,
-  showSearch = true,
-}: FilterSelectProps) {
+                               options,
+                               value,
+                               onChange,
+                               placeholder = "Selecionar...",
+                               className,
+                               maxVisibleOptions = 5,
+                               allowClear = true,
+                             }: FilterSelectProps) {
+  const [search, setSearch] = useState("")
+
+  const filteredOptions = useMemo(() => {
+    const opts = allowClear ? [{ value: "", label: "Todos" }, ...options] : options
+    if (!search) return opts
+    return opts.filter(option => option.label.toLowerCase().includes(search.toLowerCase()))
+  }, [options, search, allowClear])
+
+  const displayedOptions = filteredOptions.slice(0, maxVisibleOptions)
+
+  const selectedLabel = options.find(o => o.value === value)?.label || placeholder
+
   return (
-      <div className={cn("flex items-center flex-1", className)}>
-      {showSearch && (
-        <div className="px-3">
-          <Search className="h-4 w-4 text-secondary" />
-        </div>
-      )}
-      <Select value={value} onValueChange={onValueChange}>
-        <SelectTrigger className="border-0 shadow-none focus:ring-0 min-w-[140px] bg-transparent">
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-        <SelectContent>
-          {options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+              variant="outline"
+              role="combobox"
+              className={cn("justify-between", className)}
+          >
+            {selectedLabel}
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="p-0 w-[--radix-popover-trigger-width]">
+          <Command shouldFilter={false}>
+            <CommandInput
+                placeholder="Filtrar..."
+                value={search}
+                onValueChange={setSearch}
+                autoFocus
+            />
+            <CommandEmpty>Nenhuma opção encontrada</CommandEmpty>
+            <CommandGroup className="overflow-auto">
+              {displayedOptions.map(option => (
+                  <CommandItem
+                      key={option.value}
+                      value={option.value}
+                      onSelect={() => {
+                        onChange?.(option.value)
+                        setSearch("")
+                      }}
+                  >
+                    <Check
+                        className={cn(
+                            "mr-2 h-4 w-4",
+                            value === option.value ? "opacity-100" : "opacity-0"
+                        )}
+                    />
+                    {option.label}
+                  </CommandItem>
+              ))}
+            </CommandGroup>
+          </Command>
+        </PopoverContent>
+      </Popover>
   )
 }
