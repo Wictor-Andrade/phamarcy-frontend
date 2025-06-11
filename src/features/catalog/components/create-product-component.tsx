@@ -22,7 +22,7 @@ const stepsData = [
 
 export default function CreateProductComponent() {
     return (
-        <div className="@container/main flex flex-1 flex-col gap-2">
+        <div className="flex flex-1 flex-col gap-2">
             <MultiStepProvider initialSteps={stepsData}>
                 <MultiStepForm>
                     <StepOne />

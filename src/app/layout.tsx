@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <html lang="pt-Br" className='light'>
+    <html lang="pt-Br">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
           <Toaster />
           <AuthProvider>
