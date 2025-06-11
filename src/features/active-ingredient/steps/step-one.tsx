@@ -45,6 +45,13 @@ export function StepOne() {
     }
 
 
+    const handleConfirm = () => {
+        form.reset()
+        setIsOpen(false)
+        nextStep()
+    }
+
+
     const confirmButtons: DialogButton[] = [
         {
             label: "Cancelar",
@@ -53,7 +60,7 @@ export function StepOne() {
         },
         {
             label: "Confirmar",
-            onClick: nextStep,
+            onClick: handleConfirm,
         },
     ]
 
