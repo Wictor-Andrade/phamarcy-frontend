@@ -13,9 +13,10 @@ import {Button} from "@/components/ui/button"
 import {Form, FormControl, FormField, FormItem, FormLabel, FormMessage} from "@/components/ui/form"
 import {Input} from "@/components/ui/input"
 import {Textarea} from "@/components/ui/textarea"
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import {toast} from "sonner";
 import {useMultiStep} from "@/contexts/multi-step-context";
+import {SelectOption} from "@/components/select-option";
+import {useMedicationFilter} from "@/features/medication/hooks/useMedicationFilter";
 
 
 const formSchema = z.object({
@@ -39,6 +40,10 @@ const formSchema = z.object({
 export default function StepTwo() {
     const [selectedImage, setSelectedImage] = useState<string | null>(null)
     const { prevStep, markStepAsCompleted } = useMultiStep()
+
+    const {
+        filter
+    } = useMedicationFilter()
 
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -148,32 +153,24 @@ export default function StepTwo() {
                                     </FormItem>
                                 )}
                             />
-
-                            <FormField
-                                control={form.control}
-                                name="activeIngredient"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-primary">Active ingredient Name</FormLabel>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                            <FormControl>
-                                                <SelectTrigger>
-                                                    <SelectValue placeholder="Placeholder" />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent>
-                                                <SelectItem value="paracetamol">Paracetamol</SelectItem>
-                                                <SelectItem value="ibuprofen">Ibuprofen</SelectItem>
-                                                <SelectItem value="aspirin">Aspirin</SelectItem>
-                                                <SelectItem value="acetaminophen">Acetaminophen</SelectItem>
-                                                <SelectItem value="diclofenac">Diclofenac</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
                         </div>
+                        <FormField
+                            control={form.control}
+                            name="activeIngredient"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <SelectOption
+                                            options={filter.ingredientsOptions}
+                                            value={field.value}
+                                            onChange={field.onChange}
+                                            placeholder="Select active ingredient..."
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
 
                         <FormField
                             control={form.control}
@@ -182,7 +179,7 @@ export default function StepTwo() {
                                 <FormItem>
                                     <FormLabel className="text-primary">Supplier</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Placeholder" {...field} />
+                                        <Input placeholder="supplier" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

@@ -11,6 +11,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "foreground-secondary": "var(--foreground-secondary)",
         card: {
           DEFAULT: "var(--background)",
           foreground: "var(--foreground)",
